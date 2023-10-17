@@ -8,6 +8,8 @@ This is built as an example simple CRUD Python API, using Flask, Yoyo-migrations
 - Modify existing rows in db
 - URL Argument validation
 - Request Body validation for PUT and POST requests
+- Runs db migrations on app startup, if any need to be run
+- tracks db migrations and makes it easy to add new ones using Pypika
 
 ## Dev
 
