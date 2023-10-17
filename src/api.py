@@ -2,7 +2,7 @@ from flask import Flask
 from flask import request
 from . import schema
 from . import db
-from .validation import verify, optional, to_search_schema
+from .validation import verify, to_search_schema
 
 app = Flask(__name__)
 

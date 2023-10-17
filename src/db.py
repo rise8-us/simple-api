@@ -38,8 +38,3 @@ def set_multi(query_builder, item : dict):
     for k, v in item.items():
         new_query_builder = new_query_builder.set(k, v)
     return new_query_builder
-
-[x for x in {"a": "b", "c": "d"}]
-"a" in {"a": "b", "c": "d"}
-
-type(r'')
