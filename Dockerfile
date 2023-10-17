@@ -11,5 +11,5 @@ COPY . /app
 # Set the working directory to /app
 WORKDIR /app
 
-# Run app.py when the container launches
-CMD ["flask", "--app", "src/api", "run"]
+# Run startup script
+CMD ["startup.sh"]

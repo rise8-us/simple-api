@@ -2,6 +2,13 @@
 
 This is built as an example simple CRUD Python API, using Flask, Yoyo-migrations, Postgresql, and Pypika.
 
+## Features
+- Query the database and use exact search
+- Insert new records into database using JSON
+- Modify existing rows in db
+- URL Argument validation
+- Request Body validation for PUT and POST requests
+
 ## Dev
 
 Install Docker and Python version 3.11

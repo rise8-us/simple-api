@@ -15,6 +15,11 @@ class Regex():
         if re.match(self.regex, item):
             return None
         return f"item '{item}' does not match regex '{self.regex}'"
+    
+class CustomMessage():
+    def __init__(self, schema, message):
+        self.message = message
+        self.schema = schema
 
 ALPHANUMERIC = Regex(r'^[a-zA-Z0-9]+$')
 INTEGER = Regex(r'^[0-9]+$')
@@ -34,6 +39,10 @@ def to_search_schema(schema):
     return {k: Optional(TYPE_REGEX.get(v, v)) for k, v in schema.items()}
 
 def verify_schema_item(schema_key, schema_type, item):
+    if type(schema_type) == CustomMessage:
+        if (schema_error := verify_schema_item(schema_key, schema_type.schema, item)):
+            return {"error": schema_type.message}
+        return None
     if type(schema_type) == Optional:
         if schema_key not in item:
             return None

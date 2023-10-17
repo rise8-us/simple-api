@@ -1,5 +1,3 @@
-from .validation import INTEGER
-
 repository_schema = {
     "id": int,
     "name": str,
