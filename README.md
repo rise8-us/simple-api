@@ -3,10 +3,11 @@
 This is built as an example simple CRUD Python API, using Flask, Yoyo-migrations, Postgresql, and Pypika.
 
 ## Features
+- Comprehensive Swagger docs for each endpoint and Swagger UI at root url
 - Query the database and use exact search
 - Insert new records into database using JSON
 - Modify existing rows in db
-- URL Argument validation
+- URL Query arg validation
 - Request Body validation for PUT and POST requests
 - Runs db migrations on app startup, if any need to be run
 - tracks db migrations and makes it easy to add new ones using Pypika
@@ -28,4 +29,6 @@ Install Docker and Python version 3.11
 `flask --app src/api run`
 
 
-Use tool like Postman to test out any of the endpoints.
+## To Start
+
+Start by navigating to `localhost:5000` in the browser and using the Swagger UI to test out the endpoints.
