@@ -6,7 +6,9 @@ from . import db
 from .validation import optional, verify, to_search_schema
 
 app = Flask(__name__)
-api = Api(app)
+api = Api(app, version='1.0', title='Example API',
+    description='An Example Python API',
+)
 
 repository_model = api.model('Resource', schema.repository_model)
 
