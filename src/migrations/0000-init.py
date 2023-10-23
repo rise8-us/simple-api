@@ -3,7 +3,7 @@ from yoyo import step
 
 steps = [
    step(
-       Query.create_table("repositories") \
+       Query.create_table("repositories").if_not_exists() \
         .columns(
             Column("id", "INT", nullable=False),
             Column("name", "VARCHAR(100)", nullable=False),
@@ -11,6 +11,6 @@ steps = [
             Column("team", "VARCHAR(20)", nullable=True),
             Column("status", "VARCHAR(20)", nullable=False)) \
         .primary_key("id").get_sql(),
-        Query.drop_table("repositories").get_sql()
+        Query.drop_table("repositories").if_exists().get_sql()
    )
 ]
