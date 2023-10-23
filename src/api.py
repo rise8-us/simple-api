@@ -1,9 +1,9 @@
 from flask import Flask
-from flask_restx import Api, Resource, fields
+from flask_restx import Api, Resource
 from flask import request
 from . import schema
 from . import db
-from .validation import verify, to_search_schema
+from .validation import optional, verify, to_search_schema
 
 app = Flask(__name__)
 api = Api(app)
@@ -16,7 +16,7 @@ class Repositories(Resource):
     @api.marshal_list_with(repository_model)
     @api.response(200, 'Success')
     @api.response(409, 'Validation Error')
-    def get():
+    def get(self):
         request_args = request.args.to_dict()
         if (errors := verify(request_args, to_search_schema(schema.repository_schema), exclusive=True)):
             return {"validation errors": errors}, 409
@@ -25,7 +25,7 @@ class Repositories(Resource):
     @api.expect(repository_model)
     @api.response(200, 'Success')
     @api.response(409, 'Validation Error')
-    def post():
+    def post(self):
         request_body = request.get_json()
         if (errors := verify(request_body, schema.repository_schema, exclusive=True)):
             return {"validation errors": errors}, 409
@@ -34,8 +34,8 @@ class Repositories(Resource):
     @api.expect(repository_model)
     @api.response(200, 'Success')
     @api.response(409, 'Validation Error')
-    def put():
+    def put(self):
         request_body = request.get_json()
-        if (errors := verify(request_body, schema.repository_schema, exclusive=True)):
+        if (errors := verify(request_body, optional(schema.repository_schema), exclusive=True)):
             return {"validation errors": errors}, 409
         return db.update("repositories", request_body, {"name": request_body["name"]})
