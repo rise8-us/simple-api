@@ -32,3 +32,10 @@ Install Docker and Python version 3.11
 ## To Start
 
 Start by navigating to `localhost:5000` in the browser and using the Swagger UI to test out the endpoints.
+
+**To add a new column to a table**
+
+1. Run `yoyo new -m "Add column <column_name> to <table>"`
+1. Add up and down queries to the new migration file that was generated.
+1. `yoyo apply`
+1. Add the new property to the schema and model in `schema.py`
